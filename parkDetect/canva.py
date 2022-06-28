@@ -3,10 +3,12 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import tensorflow as tf
-import tf.model_from_json
 import sys
 import os
 import uuid
+import cv2
+import numpy as np
+from PyQt5.QtWidgets import QWidget, QLabel, QApplication, QHBoxLayout
 class Window(QMainWindow):
 
     def __init__(self):
@@ -65,20 +67,22 @@ class Window(QMainWindow):
         detect.addAction(spiralDetect)
         spiralDetect.triggered.connect(self.detect_spiral)
 
-        # # creating  action for detecting wave
-        # waveDetect = QAction('Wave', self)
-        # waveDetect.setShortcut('Ctrl + W')
-        # detect.addAction(waveDetect)
-        # waveDetect.triggered.connect(self.detect_wave)
-
         # options for output label
-        self.label = QLabel()
-        font = self.label.font()
+        self.label1 = QLabel(self)
+        self.label2 = QLabel(self)
+        font = self.label1.font()
         font.setPointSize(25)
-        self.label.setFont(font)
-        self.label.setAlignment(Qt.AlignHCenter)
-        self.setCentralWidget(self.label)
+        self.label1.setFont(font)
+        self.label1.setAlignment(Qt.AlignHCenter)
+       
 
+        font = self.label2.font()
+        font.setPointSize(25)
+        self.label2.setFont(font)
+        self.label2.setAlignment(Qt.AlignHCenter)
+        
+        self.label1.setGeometry(100,150,700,300)
+        self.label2.setGeometry(200,50,300,600)
         # creating options for brush sizes
         # creating action for selecting pixel of 4px
         pix_4 = QAction("4px", self)
@@ -150,46 +154,43 @@ class Window(QMainWindow):
     # method for clearing every thing on canvas
     def clear(self):
         self.image.fill(Qt.white)
-        self.label.setText("")
+        self.label1.setText("")
+        self.label2.setText("")
         self.update()
 
-    json_file = open('models/model_structure.json','r')
-    model_structure = json_file.read()
-    json_file.close()
-
-    model = model_from_json(model_structure)
-
-    model.load_weights('models/model_weights.h5')
+    
     # methods for detecting image
     def detect_spiral(self):
         # save temporary image
+        json_file = open('models/model_structure.json','r')
+        model_structure = json_file.read()
+        json_file.close()
+        model = tf.keras.models.model_from_json(model_structure)
+        model.load_weights('models/model_weights.h5')
         self.image.save('temp.png', 'png')
         img = cv2.imread('temp.png')
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         resize = tf.image.resize(img, (256,256))
         pred = model.predict(np.expand_dims(resize/255, 0))
 
-
-
-
         # make predictions from image
         # pred = predict_image('temp.png', spiralModel)
         # output predictions red for parkinson's green for healthy
-        self.label.setText(pred)
-        # self.label.setStyleSheet(
-        #     "color: green;") if pred == "Healthy" else self.label.setStyleSheet("color: red;")
-    #
-    # def detect_wave(self):
-    #     # save temporary image
-    #     self.image.save('temp.png', 'png')
-    #     # make predictions from image
-    #     pred = predict_image('temp.png', waveModel)
-    #     # output predictions red for parkinson's green for
-    #     self.label.setText(pred)
-    #     self.label.setStyleSheet(
-    #         "color: green;") if pred == "Healthy" else self.label.setStyleSheet("color: red;")
+        p=str(pred)
+        if(pred<0.5):
+          self.label1.setText("Healthy")
+          self.label2.setText(p)
+          
+          
+        else:
+            self.label1.setText("Likely to have parkinson's")
+            self.label2.setText(p)
+        self.label1.setStyleSheet(
+            "color: green;") if pred < 0.5 else self.label1.setStyleSheet("color: red;")
+        self.label2.setStyleSheet(
+            "color: green;") if pred < 0.5 else self.label2.setStyleSheet("color: red;")
 
-    # methods for changing pixel sizes
+  # methods for changing pixel sizes
     def Pixel_4(self):
         self.brushSize = 4
 
