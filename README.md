@@ -3,9 +3,9 @@
 </p>
 
 
-<p align="center" ;font-size:300px;"><b>
+<h1 align="center" ><b>
   Parkinson's disease prediction with Hand-drawn spiral images.<b\>
-</p>
+</h1>
 
 ## Project done by :
 
@@ -38,6 +38,6 @@ Several models were trained for this task (as a learning experience). Ultimately
 * The image dataset was augumented using keras libraries and they we preprocessed using OpenCV libraries.
 * Using the preprocessed data an convolutional neural network was developed with a single layer of 512 neurons and several dropout layers.
 
-## Source of Data
+## Acknowledgements
 
-The data folder was downloaded from [KAGGLE](https://www.kaggle.com/datasets/kmader/parkinsons-drawings) which provides the open source datasets.  
+The image data folder was downloaded from an article on [pyimagesearch](https://www.pyimagesearch.com/2019/04/29/detecting-parkinsons-disease-with-opencv-computer-vision-and-the-spiral-wave-test/) which provides the author's own approach using machine learning algorithms on this data set. Few of the computer vision techniques were revised from his post. Additionally, he mentioned the source of the data set, Adriano de Oliveira Andrade and Joao Paulo Folado from the NIATS of Federal University of Uberlândia. 
