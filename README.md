@@ -40,4 +40,4 @@ Several models were trained for this task (as a learning experience). Ultimately
 
 ## Acknowledgements
 
-The image data folder was downloaded from an article on [pyimagesearch](https://www.pyimagesearch.com/2019/04/29/detecting-parkinsons-disease-with-opencv-computer-vision-and-the-spiral-wave-test/) which provides the author's own approach using machine learning algorithms on this data set. Few of the computer vision techniques were revised from his post. Additionally, he mentioned the source of the data set, Adriano de Oliveira Andrade and Joao Paulo Folado from the NIATS of Federal University of Uberlândia. 
+The image data folder was downloaded from an article on [pyimagesearch](https://www.pyimagesearch.com/2019/04/29/detecting-parkinsons-disease-with-opencv-computer-vision-and-the-spiral-wave-test/) which provides the author's own approach using machine learning algorithms on this data set. Few of the computer vision techniques were revised from his post. Originally the dataset is curated by Adriano de Oliveira Andrade and Joao Paulo Folado from the NIATS of Federal University of Uberlândia. 
