@@ -3,9 +3,9 @@
 </p>
 
 
-<h1 align="center" ><b>
+<h2 align="center" ><b>
   Parkinson's disease prediction with Hand-drawn spiral images.<b\>
-</h1>
+</h2>
 
 ## Project done by :
 
