@@ -22,12 +22,15 @@ This is the official project repository of the team 7 for National University of
 
 ## Technologies
 
-* Python 3
-* Tensorflow 2.1.8 / Keras
-* scikit-learn
-* OpenCV
-* Flask
-* Matplotlib
+* [Python 3](https://www.python.org)
+* [Tensorflow 2.1.8 / Keras](https://www.tensorflow.org)
+* [scikit-learn](https://scikit-learn.org/stable/)
+* [OpenCV](https://opencv.org)
+* [Flask](https://flask.palletsprojects.com/en/2.1.x/)
+* [Matplotlib](https://matplotlib.org)
+
+## Parkinson's Disease : 
+<p> Parkinson's disease is a brain disorder that causes unintended or uncontrollable movements, such as shaking, stiffness, and difficulty with balance and coordination. Symptoms usually begin gradually and worsen over time. As the disease progresses, people may have difficulty walking and talking.</p>
 
 
 
