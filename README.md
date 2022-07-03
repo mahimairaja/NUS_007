@@ -34,7 +34,7 @@ This is the official project repository of the team 7 for National University of
 
 
 
-## Machine Learning and Deep Learning Approach
+##Deep Learning Approach
 
 Several models were trained for this task (as a learning experience). Ultimately, the Convolution Neural Network (CNN) approach was chosen as the best of all when compared to other model's performance.
 
